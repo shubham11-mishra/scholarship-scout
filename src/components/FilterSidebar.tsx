@@ -61,16 +61,16 @@ const FILTER_GROUPS = [
 ];
 
 const FilterSidebar = ({ filters, onToggleFilter, onClearAll }: FilterSidebarProps) => (
-  <aside className="bg-card border border-border rounded-xl p-5 sticky top-20 hidden md:block shadow-sm">
+  <aside className="glass rounded-2xl p-5 sticky top-20 hidden md:block">
     <div className="text-[11px] font-semibold tracking-[0.08em] uppercase text-muted-foreground mb-4 flex items-center justify-between">
       Filters
-      <button onClick={onClearAll} className="bg-transparent border-none cursor-pointer text-accent text-xs font-semibold">
+      <button onClick={onClearAll} className="bg-transparent border-none cursor-pointer text-accent text-xs font-semibold hover:text-accent/80 transition-colors">
         Clear all
       </button>
     </div>
     {FILTER_GROUPS.map((group, gi) => (
       <div key={group.key}>
-        {gi > 0 && <div className="h-px bg-border my-3.5" />}
+        {gi > 0 && <div className="h-px bg-border/50 my-3.5" />}
         <div className="mb-3">
           <div className="text-xs font-semibold text-foreground mb-2 tracking-wide">{group.label}</div>
           {group.options.map((opt) => {
@@ -78,7 +78,9 @@ const FilterSidebar = ({ filters, onToggleFilter, onClearAll }: FilterSidebarPro
             return (
               <div
                 key={opt.value}
-                className="flex items-center justify-between px-2 py-1.5 rounded-md cursor-pointer hover:bg-muted transition-colors"
+                className={`flex items-center justify-between px-2 py-1.5 rounded-lg cursor-pointer transition-all ${
+                  checked ? "bg-teal-light" : "hover:bg-secondary"
+                }`}
                 onClick={() => onToggleFilter(group.key, opt.value)}
               >
                 <label className="flex items-center gap-2 text-[13px] text-muted-foreground cursor-pointer flex-1">
@@ -88,9 +90,9 @@ const FilterSidebar = ({ filters, onToggleFilter, onClearAll }: FilterSidebarPro
                     onChange={() => onToggleFilter(group.key, opt.value)}
                     className="w-[15px] h-[15px] accent-primary cursor-pointer rounded"
                   />
-                  {opt.label}
+                  <span className={checked ? "text-foreground" : ""}>{opt.label}</span>
                 </label>
-                <span className="text-[11px] text-muted-foreground bg-muted rounded-md px-1.5 py-px">{opt.count}</span>
+                <span className="text-[11px] text-muted-foreground bg-secondary rounded-md px-1.5 py-px">{opt.count}</span>
               </div>
             );
           })}
