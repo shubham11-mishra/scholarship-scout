@@ -103,7 +103,7 @@ const Index = () => {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortOption)}
-              className="border border-border rounded-lg px-3 py-1.5 font-body text-[13px] text-slate bg-card cursor-pointer outline-none"
+              className="border border-border rounded-lg px-3 py-1.5 text-[13px] text-muted-foreground bg-card cursor-pointer outline-none"
             >
               <option value="closing">Closing Soonest</option>
               <option value="value">Highest Value</option>
