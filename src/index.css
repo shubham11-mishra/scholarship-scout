@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,45 +6,45 @@
 
 @layer base {
   :root {
-    --background: 36 27% 94%;
-    --foreground: 0 0% 5.5%;
+    --background: 220 20% 97%;
+    --foreground: 230 25% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 5.5%;
+    --card-foreground: 230 25% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 5.5%;
-    --primary: 178 61% 27%;
+    --popover-foreground: 230 25% 12%;
+    --primary: 230 65% 28%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 36 27% 96%;
-    --secondary-foreground: 216 20% 30%;
-    --muted: 36 20% 92%;
-    --muted-foreground: 224 6% 57%;
-    --accent: 36 27% 96%;
-    --accent-foreground: 0 0% 5.5%;
-    --destructive: 16 67% 54%;
+    --secondary: 220 14% 94%;
+    --secondary-foreground: 230 20% 25%;
+    --muted: 220 14% 92%;
+    --muted-foreground: 220 10% 50%;
+    --accent: 28 92% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 4 72% 56%;
     --destructive-foreground: 0 0% 100%;
-    --border: 33 18% 85%;
-    --input: 33 18% 85%;
-    --ring: 178 61% 27%;
-    --radius: 0.75rem;
+    --border: 220 14% 89%;
+    --input: 220 14% 89%;
+    --ring: 230 65% 28%;
+    --radius: 0.625rem;
 
     /* Spectrum custom tokens */
-    --ink: 0 0% 5.5%;
-    --canvas: 36 27% 94%;
-    --cream: 36 27% 97%;
-    --gold: 39 67% 48%;
-    --gold-light: 39 70% 74%;
-    --teal: 178 61% 27%;
-    --teal-light: 178 33% 92%;
-    --coral: 16 67% 54%;
-    --coral-light: 16 80% 95%;
-    --slate: 216 20% 30%;
+    --ink: 230 25% 12%;
+    --canvas: 220 20% 97%;
+    --cream: 220 14% 96%;
+    --gold: 28 92% 56%;
+    --gold-light: 28 85% 93%;
+    --teal: 230 65% 28%;
+    --teal-light: 230 40% 95%;
+    --coral: 4 72% 56%;
+    --coral-light: 4 80% 95%;
+    --slate: 220 12% 42%;
 
-    --font-display: 'Playfair Display', serif;
-    --font-body: 'DM Sans', sans-serif;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
 
-    --shadow-sm: 0 1px 4px rgba(14,14,14,0.06);
-    --shadow-md: 0 4px 20px rgba(14,14,14,0.09);
-    --shadow-lg: 0 12px 40px rgba(14,14,14,0.13);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -66,6 +66,8 @@
     font-family: var(--font-body);
     font-size: 15px;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 

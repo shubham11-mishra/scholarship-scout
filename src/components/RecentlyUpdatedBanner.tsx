@@ -1,10 +1,10 @@
 const RecentlyUpdatedBanner = ({ onFilterSchool }: { onFilterSchool: (school: string) => void }) => (
   <div className="max-w-[1100px] mx-auto mb-8 px-4 md:px-8 animate-fade-up" style={{ animationDelay: "0.15s" }}>
-    <div className="bg-gradient-to-br from-teal to-[hsl(178,55%,33%)] rounded-lg p-5 flex items-center gap-5 flex-wrap">
-      <div className="text-3xl">🔄</div>
+    <div className="bg-primary rounded-xl p-5 flex items-center gap-5 flex-wrap">
+      <div className="text-2xl">🔄</div>
       <div className="flex-1">
-        <strong className="text-primary-foreground text-[15px] block mb-0.5">Recently Updated Scholarships</strong>
-        <span className="text-primary-foreground/75 text-[13px]">These listings were verified or updated in the last 7 days</span>
+        <strong className="text-primary-foreground text-[14px] block mb-0.5">Recently Updated</strong>
+        <span className="text-primary-foreground/65 text-[12px]">Verified or updated in the last 7 days</span>
       </div>
       <div className="flex gap-2 flex-wrap">
         {[
@@ -15,9 +15,9 @@ const RecentlyUpdatedBanner = ({ onFilterSchool }: { onFilterSchool: (school: st
           <button
             key={item.school}
             onClick={() => onFilterSchool(item.school)}
-            className="bg-primary-foreground/15 text-primary-foreground border border-primary-foreground/25 rounded-full px-3 py-1 text-xs font-semibold cursor-pointer hover:bg-primary-foreground/25 transition-colors"
+            className="bg-primary-foreground/10 text-primary-foreground border border-primary-foreground/20 rounded-lg px-3 py-1 text-xs font-medium cursor-pointer hover:bg-primary-foreground/20 transition-colors"
           >
-            {item.school} · updated {item.time}
+            {item.school} · {item.time}
           </button>
         ))}
       </div>

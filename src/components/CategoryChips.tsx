@@ -10,28 +10,28 @@ const CategoryChips = ({ activeCategory, onCategoryChange }: CategoryChipsProps)
     cat === "All" ? SCHOLARSHIPS.length : SCHOLARSHIPS.filter((s) => s.category === cat).length;
 
   return (
-    <div className="max-w-[1100px] mx-auto px-4 md:px-8 pb-10 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-      <div className="text-[11px] font-bold tracking-[0.1em] uppercase text-muted-foreground mb-3.5">
+    <div className="max-w-[1100px] mx-auto px-4 md:px-8 pb-8 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+      <div className="text-[11px] font-semibold tracking-[0.1em] uppercase text-muted-foreground mb-3">
         Browse by Category
       </div>
-      <div className="flex flex-wrap gap-2.5">
+      <div className="flex flex-wrap gap-2">
         {CATEGORIES.map((c) => (
           <button
             key={c.label}
             onClick={() => onCategoryChange(c.label)}
-            className={`flex items-center gap-2 border-[1.5px] rounded-full px-4 py-2 text-[13px] font-semibold cursor-pointer transition-all select-none ${
+            className={`flex items-center gap-1.5 border rounded-lg px-3.5 py-2 text-[13px] font-medium cursor-pointer transition-all select-none ${
               activeCategory === c.label
-                ? "border-teal text-teal bg-teal-light"
-                : "bg-card border-border text-slate hover:border-teal hover:text-teal hover:bg-teal-light"
+                ? "border-primary text-primary bg-teal-light"
+                : "bg-card border-border text-muted-foreground hover:border-primary/40 hover:text-foreground"
             }`}
           >
-            <span className="text-base">{c.icon}</span>
+            <span className="text-sm">{c.icon}</span>
             {c.label}
             <span
-              className={`rounded-full px-2 py-px text-[11px] font-bold ${
+              className={`rounded-md px-1.5 py-px text-[11px] font-semibold ${
                 activeCategory === c.label
-                  ? "bg-teal/20 text-teal"
-                  : "bg-border text-muted-foreground"
+                  ? "bg-primary/10 text-primary"
+                  : "bg-muted text-muted-foreground"
               }`}
             >
               {getCounts(c.label)}
