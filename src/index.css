@@ -6,54 +6,58 @@
 
 @layer base {
   :root {
-    --background: 220 20% 97%;
-    --foreground: 230 25% 12%;
-    --card: 0 0% 100%;
-    --card-foreground: 230 25% 12%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 230 25% 12%;
-    --primary: 230 65% 28%;
+    --background: 225 25% 6%;
+    --foreground: 210 20% 95%;
+    --card: 225 20% 10%;
+    --card-foreground: 210 20% 95%;
+    --popover: 225 20% 10%;
+    --popover-foreground: 210 20% 95%;
+    --primary: 265 85% 60%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 14% 94%;
-    --secondary-foreground: 230 20% 25%;
-    --muted: 220 14% 92%;
-    --muted-foreground: 220 10% 50%;
-    --accent: 28 92% 56%;
+    --secondary: 225 15% 15%;
+    --secondary-foreground: 210 15% 70%;
+    --muted: 225 15% 14%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 170 75% 48%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 4 72% 56%;
+    --destructive: 0 72% 56%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 14% 89%;
-    --input: 220 14% 89%;
-    --ring: 230 65% 28%;
-    --radius: 0.625rem;
+    --border: 225 15% 18%;
+    --input: 225 15% 18%;
+    --ring: 265 85% 60%;
+    --radius: 0.75rem;
 
     /* Spectrum custom tokens */
-    --ink: 230 25% 12%;
-    --canvas: 220 20% 97%;
-    --cream: 220 14% 96%;
-    --gold: 28 92% 56%;
-    --gold-light: 28 85% 93%;
-    --teal: 230 65% 28%;
-    --teal-light: 230 40% 95%;
-    --coral: 4 72% 56%;
-    --coral-light: 4 80% 95%;
-    --slate: 220 12% 42%;
+    --ink: 210 20% 95%;
+    --canvas: 225 25% 8%;
+    --cream: 225 15% 12%;
+    --gold: 38 95% 58%;
+    --gold-light: 38 80% 18%;
+    --teal: 265 85% 60%;
+    --teal-light: 265 50% 15%;
+    --coral: 0 72% 56%;
+    --coral-light: 0 50% 15%;
+    --slate: 220 10% 60%;
 
     --font-display: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
 
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
-    --shadow-lg: 0 12px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+    --shadow-lg: 0 12px 50px rgba(0,0,0,0.5);
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --glow-primary: 0 0 30px hsl(265 85% 60% / 0.3);
+    --glow-accent: 0 0 30px hsl(170 75% 48% / 0.3);
+    --glow-gold: 0 0 30px hsl(38 95% 58% / 0.3);
+
+    --sidebar-background: 225 20% 10%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 265 85% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 225 15% 15%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 225 15% 18%;
+    --sidebar-ring: 265 85% 60%;
   }
 }
 
@@ -75,9 +79,63 @@
   .font-display {
     font-family: var(--font-display);
   }
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+  .glow-gold {
+    box-shadow: var(--glow-gold);
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(265 85% 65%), hsl(170 75% 52%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glass {
+    background: hsl(225 20% 10% / 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(225 15% 22%);
+  }
+  .card-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .card-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(265 85% 60% / 0.04), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+  }
+  .card-shine:hover::before {
+    left: 125%;
+  }
 }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
