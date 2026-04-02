@@ -28,6 +28,8 @@ const Index = () => {
 
   const filtered = useMemo(() => {
     let data = schools.filter((s) => {
+      // Hide schools with no scholarship URL
+      if (s.scholarship_confidence === "not_found" && !s.scholarship_url && !s.website_url) return false;
       if (activeSearch) {
         const q = activeSearch.toLowerCase();
         if (
