@@ -10,6 +10,7 @@ type SortOption = "name" | "suburb" | "confidence" | "value";
 type ConfidenceFilter = "all" | "high" | "medium" | "low";
 
 const Index = () => {
+  const { user, interests } = useAuth();
   const [schools, setSchools] = useState<SchoolScholarship[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -22,6 +23,7 @@ const Index = () => {
   const [genderFilter, setGenderFilter] = useState("all");
   const [valueTypeFilter, setValueTypeFilter] = useState("all");
   const [showFilters, setShowFilters] = useState(false);
+  const [showPersonalized, setShowPersonalized] = useState(true);
 
   useEffect(() => {
     loadScholarshipsFromCSV().then((data) => {
