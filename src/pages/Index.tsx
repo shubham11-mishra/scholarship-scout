@@ -60,6 +60,10 @@ const Index = () => {
   const filtered = useMemo(() => {
     let data = schools.filter((s) => {
       if (s.scholarship_confidence === "not_found") return false;
+      // Personalized filter: only show user's interest categories
+      if (user && interests.length > 0 && showPersonalized && s.category) {
+        if (!interests.some((i) => i.toLowerCase() === s.category.toLowerCase())) return false;
+      }
       if (activeSearch) {
         const q = activeSearch.toLowerCase();
         if (
