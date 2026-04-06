@@ -3,7 +3,8 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import SchoolCard from "@/components/SchoolCard";
 import { SchoolScholarship, loadScholarshipsFromCSV } from "@/data/csvScholarships";
-import { Filter, X } from "lucide-react";
+import { Filter, X, Sparkles } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 
 type SortOption = "name" | "suburb" | "confidence" | "value";
 type ConfidenceFilter = "all" | "high" | "medium" | "low";
