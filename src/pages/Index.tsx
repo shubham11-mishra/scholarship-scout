@@ -94,7 +94,7 @@ const Index = () => {
       case "value": data.sort((a, b) => (parseInt(b.value_num) || 0) - (parseInt(a.value_num) || 0)); break;
     }
     return data;
-  }, [schools, activeSearch, sortBy, confidenceFilter, sectorFilter, stateFilter, categoryFilter, genderFilter, valueTypeFilter]);
+  }, [schools, activeSearch, sortBy, confidenceFilter, sectorFilter, stateFilter, categoryFilter, genderFilter, valueTypeFilter, user, interests, showPersonalized]);
 
   const counts = useMemo(() => {
     const visible = schools.filter((s) => s.scholarship_confidence !== "not_found");
