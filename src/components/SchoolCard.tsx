@@ -50,10 +50,10 @@ const SchoolCard = ({ school, index }: SchoolCardProps) => {
           {school.scholarship_note}
         </p>
 
-        {/* Checked date */}
+        {/* Checked date
         <div className="text-[11px] text-muted-foreground mb-3">
           Checked: {new Date(school.checked_at).toLocaleDateString()}
-        </div>
+        </div> */}
 
         {/* Actions */}
         <div className="flex gap-2 pt-3 border-t border-border/50">

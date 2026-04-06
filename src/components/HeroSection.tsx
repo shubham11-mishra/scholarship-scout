@@ -42,15 +42,7 @@ const HeroSection = ({ searchQuery, onSearchChange, onSearch }: HeroSectionProps
           Search
         </button>
       </div>
-      <div className="flex items-center justify-center gap-4 md:gap-6 flex-wrap text-[12px] text-muted-foreground mt-5">
-        <div><strong className="text-foreground font-semibold">10,427</strong> schools</div>
-        <div className="w-1 h-1 rounded-full bg-primary/40" />
-        <div><strong className="text-foreground font-semibold">2,400+</strong> scholarships</div>
-        <div className="w-1 h-1 rounded-full bg-primary/40" />
-        <div><strong className="text-accent font-semibold">AI-verified</strong> listings</div>
-        <div className="w-1 h-1 rounded-full bg-primary/40" />
-        <div>Updated <strong className="text-gold font-semibold">today</strong></div>
-      </div>
+      
     </div>
   </section>
 );

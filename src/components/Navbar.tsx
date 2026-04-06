@@ -6,7 +6,7 @@ const Navbar = () => (
       <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground text-sm font-display font-bold shadow-md">
         S
       </div>
-      <span className="gradient-text">Spectrum</span>
+      <span className="gradient-text">Spectrum Scholarship Searcher</span>
     </a>
     <div className="flex items-center gap-1">
       <a href="#" className="hidden md:inline-block px-3 py-1.5 rounded-lg text-muted-foreground text-sm font-medium hover:bg-secondary hover:text-foreground transition-all">
@@ -20,7 +20,7 @@ const Navbar = () => (
       </a>
       <a href="#" className="bg-gradient-to-r from-primary to-accent text-primary-foreground px-4 py-1.5 rounded-lg text-sm font-semibold hover:opacity-90 transition-all flex items-center gap-1.5 glow-primary">
         <Sparkles className="w-3.5 h-3.5" />
-        Get Alerts
+        Login/SignUp
       </a>
     </div>
   </nav>

@@ -29,7 +29,7 @@ const Index = () => {
   const filtered = useMemo(() => {
     let data = schools.filter((s) => {
       // Hide schools with no scholarship URL
-      if (s.scholarship_confidence === "not_found" && !s.scholarship_url && !s.website_url) return false;
+      if (s.scholarship_confidence === "not_found") return false;
       if (activeSearch) {
         const q = activeSearch.toLowerCase();
         if (
@@ -73,7 +73,7 @@ const Index = () => {
           Filter by Scholarship Confidence
         </div>
         <div className="flex flex-wrap gap-2">
-          {(["all", "high", "medium", "low", "not_found"] as ConfidenceFilter[]).map((c) => (
+          {(["all", "high", "medium", "low"] as ConfidenceFilter[]).map((c) => (
             <button
               key={c}
               onClick={() => setConfidenceFilter(c)}
