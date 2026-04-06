@@ -3,12 +3,14 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import SchoolCard from "@/components/SchoolCard";
 import { SchoolScholarship, loadScholarshipsFromCSV } from "@/data/csvScholarships";
-import { Filter, X } from "lucide-react";
+import { Filter, X, Sparkles } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 
 type SortOption = "name" | "suburb" | "confidence" | "value";
 type ConfidenceFilter = "all" | "high" | "medium" | "low";
 
 const Index = () => {
+  const { user, interests } = useAuth();
   const [schools, setSchools] = useState<SchoolScholarship[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -21,6 +23,7 @@ const Index = () => {
   const [genderFilter, setGenderFilter] = useState("all");
   const [valueTypeFilter, setValueTypeFilter] = useState("all");
   const [showFilters, setShowFilters] = useState(false);
+  const [showPersonalized, setShowPersonalized] = useState(true);
 
   useEffect(() => {
     loadScholarshipsFromCSV().then((data) => {
@@ -57,6 +60,10 @@ const Index = () => {
   const filtered = useMemo(() => {
     let data = schools.filter((s) => {
       if (s.scholarship_confidence === "not_found") return false;
+      // Personalized filter: only show user's interest categories
+      if (user && interests.length > 0 && showPersonalized && s.category) {
+        if (!interests.some((i) => i.toLowerCase() === s.category.toLowerCase())) return false;
+      }
       if (activeSearch) {
         const q = activeSearch.toLowerCase();
         if (
@@ -87,7 +94,7 @@ const Index = () => {
       case "value": data.sort((a, b) => (parseInt(b.value_num) || 0) - (parseInt(a.value_num) || 0)); break;
     }
     return data;
-  }, [schools, activeSearch, sortBy, confidenceFilter, sectorFilter, stateFilter, categoryFilter, genderFilter, valueTypeFilter]);
+  }, [schools, activeSearch, sortBy, confidenceFilter, sectorFilter, stateFilter, categoryFilter, genderFilter, valueTypeFilter, user, interests, showPersonalized]);
 
   const counts = useMemo(() => {
     const visible = schools.filter((s) => s.scholarship_confidence !== "not_found");
@@ -114,6 +121,30 @@ const Index = () => {
       <Navbar />
       <HeroSection searchQuery={searchQuery} onSearchChange={setSearchQuery} onSearch={handleSearch} />
 
+      {/* Personalized banner */}
+      {user && interests.length > 0 && (
+        <div className="max-w-[1200px] mx-auto px-4 md:px-8 pb-3 animate-fade-up">
+          <div className="glass rounded-xl px-4 py-2.5 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2 text-sm">
+              <Sparkles className="w-4 h-4 text-primary shrink-0" />
+              <span className="text-muted-foreground">
+                Showing scholarships matching your interests: {" "}
+                <span className="text-foreground font-semibold">{interests.join(", ")}</span>
+              </span>
+            </div>
+            <button
+              onClick={() => setShowPersonalized(!showPersonalized)}
+              className={`text-xs font-medium px-3 py-1 rounded-lg cursor-pointer border-none transition-all ${
+                showPersonalized
+                  ? "bg-primary/15 text-primary"
+                  : "bg-secondary text-muted-foreground"
+              }`}
+            >
+              {showPersonalized ? "Show All" : "My Interests"}
+            </button>
+          </div>
+        </div>
+      )}
       {/* Confidence filter chips */}
       <div className="max-w-[1200px] mx-auto px-4 md:px-8 pb-4 animate-fade-up" style={{ animationDelay: "0.1s" }}>
         <div className="flex items-center justify-between mb-3">
